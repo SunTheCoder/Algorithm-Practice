@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//BUBBLE SORT----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//BUBBLE SORT aka "sinking sort"---------------------------------------------------------------------------------------------------------------------------------------------
 
-function bubbleSort(arr) {
+function bubbleSort(arr) {  // Best case: O(n), Worst case: O(n^2)
    
     for (let i = 1; i < arr.length; i++) {                      // Iterate through the array/Perform the operation N times
 
@@ -17,32 +17,35 @@ function bubbleSort(arr) {
                                                                 // Otherwise, repeat from the beginning
 }
 
-console.log(bubbleSort([3,2,0,4,1]))
+console.log('Bubble Sort: ', bubbleSort([3,2,0,4,1]))
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //INSERTION SORT-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function insertionSort(arr) {  // Best case: O(n), Worst case: O(n^2)
+function insertionSort(arr) {     // Best case: O(n), Worst case: O(n^2)
 
-    for (let i = 1; i < arr.length; i++) {                      // loop to reset the elements/pairs being checked
-      let currentElement = arr[i];                              // second el
-      let divider = i - 1;                                      // starts at i; lastIndex is also a good varible name and/or way of thinking about it
-  
-      while (divider >= 0 && arr[divider] > currentElement) {   // the while loop that will check if divider/index is greater than 0 and if the array is sorted; 
-                                                                // therefore we will continue checking values against the current element
+    for (let i = 1; i < arr.length; i++) {                               // loop to reset the elements/pairs being checked
 
-        arr[divider + 1] = arr[divider];                        // shifts the element that is greater than currentElement in the index to the right
+        let currentElement = arr[i] 
+        let divider = i - 1                                              // initialize a currentElement starting at index i; lastIndex is also a good varible name and/or way of thinking about it
+    
+        while (divider >= 0 && arr[divider] > currentElement) {          // the while loop that will check if divider/index is greater than 0 and if the array is sorted; 
+                                                                         // therefore we will continue checking values against the current element
+                                                                         
+            arr[divider+1] = arr[divider]                                // shifts the element that is greater than currentElement in the index to the right
 
-        divider--;                                              // increment divider
-      }
-      arr[divider + 1] = currentElement;                        // inserts the element at the place of the divider/lastIndex
+            divider--                                                    //increment divider
+
+        }
+        arr[divider+1] = currentElement                                  // inserts the currentElement at the place of the divider/lastIndex
+
     }
-    return arr;
-  };
+    return arr
+}
 
 let arr = [3,2,0,4,1] // [0,1,2,3,4]
 
-// console.log(insertionSort(arr))
+console.log('Insertion Sort: ', insertionSort(arr))
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //SELECTION SORT-------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,7 +76,7 @@ function selectionSort(arr) {  // O(n^2) time complexity
 
 let arr2 = [3,2,0,4,1] // [0,1,2,3,4]
 
-// console.log(selectionSort(arr2))
+console.log('Selection Sort: ', selectionSort(arr2))
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MERGE SORT-----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -115,4 +118,4 @@ function merge(left, right) {                                   // Takes in two 
 
 let arr3 = [3,2,0,4,1] // [0,1,2,3,4]
     
-// console.log(mergesort(arr3))
+console.log('Merge Sort: ', mergesort(arr3))
