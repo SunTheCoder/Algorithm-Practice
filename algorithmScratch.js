@@ -5,7 +5,7 @@ function bubbleSort(arr) {  // Best case: O(n), Worst case: O(n^2)
    
     for (let i = 1; i < arr.length; i++) {                      // Iterate through the array/Perform the operation N times
 
-        for (let j = 0; j < arr.length - 1; j++) {              // Iterate through EACH element of the array
+        for (let j = 0; j < arr.length - 1; j++) {              // Iterate through/compare EACH element of the array
             
             if (arr[j] > arr[j+1]) {                            // If the current value is greater than its neighbor to the right
                                                                  
@@ -31,7 +31,7 @@ function insertionSort(arr) {     // Best case: O(n), Worst case: O(n^2)
     
         while (divider >= 0 && arr[divider] > currentElement) {          // the while loop that will check if divider/index is greater than 0 and if the array is sorted; 
                                                                          // therefore we will continue checking values against the current element
-                                                                         
+
             arr[divider+1] = arr[divider]                                // shifts the element that is greater than currentElement in the index to the right
 
             divider--                                                    //increment divider
