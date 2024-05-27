@@ -7,7 +7,7 @@ function bubbleSort(arr) {  // Best case: O(n), Worst case: O(n^2)
 
         for (let j = 0; j < arr.length - 1; j++) {              // Iterate through/compare EACH element of the array
             
-            if (arr[j] > arr[j+1]) {                            // If the current value is greater than its neighbor to the right
+            if (arr[j] > arr[j+1]) {                            // If the current value is greater than its neighbor to the right...
                                                                  
                 [arr[j], arr[j+1]] = [arr[j+1], arr[j]]         // Swap those values                                      
             }
@@ -17,7 +17,7 @@ function bubbleSort(arr) {  // Best case: O(n), Worst case: O(n^2)
                                                                 // Otherwise, repeat from the beginning
 }
 
-console.log('Bubble Sort: ', bubbleSort([3,2,0,4,1]))
+console.log('BubbleSort: ', bubbleSort([0,13,99,56,598]), '\n')
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //INSERTION SORT-------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ function insertionSort(arr) {     // Best case: O(n), Worst case: O(n^2)
         while (divider >= 0 && arr[divider] > currentElement) {          // the while loop that will check if divider/index is greater than 0 and if the array is sorted; 
                                                                          // therefore we will continue checking values against the current element
 
-            arr[divider+1] = arr[divider]                                // shifts the element that is greater than currentElement in the index to the right
+            arr[divider+1] = arr[divider]                                // shifts the element that is greater than currentElement to the right
 
             divider--                                                    //increment divider
 
@@ -44,8 +44,10 @@ function insertionSort(arr) {     // Best case: O(n), Worst case: O(n^2)
 }
 
 let arr = [3,2,0,4,1] // [0,1,2,3,4]
+let oArr = [0,13,99,56,598]
 
-console.log('Insertion Sort: ', insertionSort(arr))
+console.log('InsertionSort: ', insertionSort(arr))
+console.log('InsertionSort: ', insertionSort(oArr), '\n')
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //SELECTION SORT-------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +78,7 @@ function selectionSort(arr) {  // O(n^2) time complexity
 
 let arr2 = [3,2,0,4,1] // [0,1,2,3,4]
 
-console.log('Selection Sort: ', selectionSort(arr2))
+console.log('SelectionSort: ', selectionSort(arr2), '\n')
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //MERGE SORT-----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -117,5 +119,90 @@ function merge(left, right) {                                   // Takes in two 
 }
 
 let arr3 = [3,2,0,4,1] // [0,1,2,3,4]
+let oArr2 = [0,13,99,56,598]
     
-console.log('Merge Sort: ', mergesort(arr3))
+console.log('MergeSort: ', mergesort(arr3))
+console.log('MergeSort: ', mergesort(oArr2), '\n')
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//RECURSIVE SORT-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// function recursiveSort(arr) {
+
+//     // Find and remove the largest value in the array
+//     let max = arr[0]
+//     let index;
+
+//     for (let i = 0; i < arr.length; i++) {
+//         let checkedNum = arr[i]
+//         if (checkedNum > max) {
+//             max = checkedNum
+//             index = i
+//         }
+//     }
+
+//     let removedMax = arr.splice(index, 1)
+
+//     console.log(max)
+//     console.log(removedMax)
+//     console.log(arr)
+
+//     // Sort the remaining elements
+//     recursiveSort(arr)
+
+//     // Put the largest value back at the end of the array
+//     arr.push(max)
+
+// }
+
+// console.log(recursiveSort([0,13,99,56,598]))
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//QUICKSORT------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function quickSort(arr) {                           // Worst Case: O(1) Best Case: O(n Log n)
+
+    if (arr.length <= 1) return                     // Check if the input is length 1 or less
+                                                    // If so, it's already sorted: return
+    for (let i = 0; i < arr.length; i++) {
+
+        let pivot = arr[i]                          // Pick a pivot
+        // console.log(pivot)
+        // console.log(i)
+        
+        let pivotIndex = i
+
+        for (let j = i; j < arr.length; j++) {      //initialize j as the index of the pivot each time/ start check at pivot. more efficent if done in O(1)
+            
+        // console.log(shift)
+            if (pivot > arr[j]) {                   // Put all values smaller than the pivot to the `left`
+                // console.log(arr)
+                let temp = arr[j]
+
+                arr[j] = pivot
+
+                arr[pivotIndex] = temp
+                pivotIndex = j
+
+                i--
+            }             
+        }
+        pivotIndex++
+    } 
+
+return arr
+
+}
+console.log('QuickSort: ', quickSort([13,0,99,56,598]))
+console.log('QuickSort: ', quickSort([18,5,777,88,186,11]))
+console.log('QuickSort: ', quickSort([18,5,11,777,88,186,11], '\n'))
+
+// Put all values larger than the pivot to the `right`
+
+// Sort the left half
+// Sort the right half
+
+// Return the array with the left, pivot, and right values
+
+
+
